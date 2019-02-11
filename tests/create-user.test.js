@@ -2,23 +2,22 @@ import { Selector } from 'testcafe';
 
 fixture('/login').page('http://localhost:3007');
 
-test(`users should be able to log in and out`, async (t) => {
+test(`users should be able to register new account`, async (t) => {
 
   // selectors
-  const loginMessage = Selector('div').withText(
-    'You successfully logged in! Welcome!')
+  const registeredMessage = Selector('div').withText(
+    'You successfully registered! Welcome!')
   const logoutMessage = Selector('div').withText('You are now logged out')
 
-  // login
   await t
     .navigateTo('http://localhost:3007')
+    .click(Selector('a[href="/register"]'))
     .typeText('input[name="username"]', 'foo')
     .typeText('input[name="password"]', 'bar')
     .click(Selector('button[type="submit"]'));
 
-  // logout
   await t
-    .expect(loginMessage.exists).ok()
+    .expect(registeredMessage.exists).ok()
     .click(Selector('a').withText('Logout'))
     .expect(logoutMessage.exists).ok()
 
