@@ -42,6 +42,7 @@ describe('Movies API Routes', () => {
         res.body.data.should.be.a('array');
         res.body.data.length.should.equal(1);
         res.body.data[0].should.have.property('user_id');
+        res.body.data[0].should.have.property('movie_id');
         res.body.data[0].should.have.property('title');
         res.body.data[0].should.have.property('created_at');
       });

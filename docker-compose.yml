@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=postgres
     healthcheck:
       test: exit 0
-  
+
   movies-db:
     container_name: movies-db
     build: ./services/movies/src/db
@@ -57,10 +57,13 @@ services:
       - NODE_ENV=${NODE_ENV}
       - TOKEN_SECRET=changeme
     depends_on:
-      users-db:
+      movies-db:
         condition: service_healthy
+      users-service:
+        condition: service_started
     links:
       - movies-db
+      - users-service
 
   web-service:
     container_name: web-service
@@ -80,7 +83,7 @@ services:
     links:
       - users-service
       - movies-service
-  
+
   swagger:
     container_name: swagger
     build: ./services/movies/swagger/
