@@ -12,7 +12,7 @@ const MovieCard = (props) => {
         </div>
         <button
           className='btn btn-primary btn-sm'
-          onClick={ () => props.saveMovie(props.title) }
+          onClick={ () => props.saveMovie(props) }
         >Add to Collection
         </button>
       </div>

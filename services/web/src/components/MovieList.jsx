@@ -6,7 +6,8 @@ const MovieList = (props) => {
     <div className="text-center">
       {props.movies.map(movie => (
         <MovieCard
-          key={movie.imdbID}
+          key={movie.key}
+          imdbID={movie.imdbID}
           title={movie.Title}
           posterUrl={movie.Poster}
           saveMovie={props.saveMovie}

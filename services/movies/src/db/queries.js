@@ -5,7 +5,7 @@ function getSavedMovies(userId) {
 }
 
 function addMovie(obj) {
-  return knex('movies').insert(obj);
+  return knex('movies').insert({ user_id: obj.user_id, title: obj.title, movie_id: obj.movie_id });
 }
 
 module.exports = {

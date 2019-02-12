@@ -109,7 +109,8 @@ class App extends Component {
       url: 'http://localhost:3001/movies',
       method: 'post',
       data: {
-        title: movie
+        title:    movie.title,
+        movie_id: movie.imdbID
       },
       headers: {
         'Content-Type': 'application/json',
